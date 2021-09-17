@@ -1,6 +1,7 @@
 package com.nureddinelmas.localizition
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -33,8 +34,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         findColor()
+        binding.one.setImageResource(imageListResult[0] as Int)
+        binding.two.setImageResource(imageListResult[1] as Int)
+        binding.three.setImageResource(imageListResult[2] as Int)
+        binding.four.setImageResource(imageListResult[3] as Int)
+
+
         binding.one.setOnClickListener {
             binding.one.setImageResource(R.drawable.ic_launcher_background)
+
             one = false
         }
 
@@ -53,28 +61,31 @@ class MainActivity : AppCompatActivity() {
             four = false
         }
 
-
         binding.red.setOnClickListener {
             if (!one){
                 binding.one.setImageResource(imageList[1])
                 one = true
                 imageList[0] = R.drawable.red
+               // binding.one.tag = "red"
             }
             else if (!two){
                 binding.two.setImageResource(imageList[1])
                 two=true
                 imageList[1] = R.drawable.red
+               // binding.two.tag = "red"
 
             } else if(!three){
                 binding.three.setImageResource(imageList[1])
                 three = true
                 imageList[2] = R.drawable.red
-                binding.textView.text = "ucuncu kirmizi oldu"
-            }else{
+                binding.textView.text = "Det blev röd på trean"
+                //binding.three.tag = "red"
+            }else if(!four){
                 binding.four.setImageResource(imageList[1])
                 four = true
                 imageList[3] = R.drawable.red
-                binding.textView.text = "dorduncu kirmizi oldu"
+                binding.textView.text = "Det blev röd på fyran"
+                //binding.four.tag = "red"
             }
         }
 
@@ -82,22 +93,23 @@ class MainActivity : AppCompatActivity() {
             if (!one){
                 binding.one.setImageResource(imageList[2])
                 one = true
-                imageList[2] = R.drawable.white
+                imageList[0] = R.drawable.white
             }
             else if (!two){
                 binding.two.setImageResource(imageList[2])
                 two=true
-                imageList[2] = R.drawable.white
+                imageList[1] = R.drawable.white
             } else if(!three){
                 binding.three.setImageResource(imageList[2])
                 three = true
                 imageList[2] = R.drawable.white
-                binding.textView.text = "ucuncu beyaz oldu"
-            }else{
+                binding.textView.setText("Det blev vit på trean")
+
+            }else if(!four){
                 binding.four.setImageResource(imageList[2])
                 four = true
-                imageList[2] = R.drawable.white
-                binding.textView.text = "dorduncu beyaz oldu"
+                imageList[3] = R.drawable.white
+                binding.textView.setText("det blev vit på fyran")
             }
         }
 
@@ -110,15 +122,15 @@ class MainActivity : AppCompatActivity() {
             else if (!two){
                 binding.two.setImageResource(imageList[0])
                 two = true
-                imageList[0] = R.drawable.blue
+                imageList[1] = R.drawable.blue
             }else if(!three){
                 binding.three.setImageResource(imageList[0])
                 three = true
-                imageList[0] = R.drawable.blue
-            }else{
+                imageList[2] = R.drawable.blue
+            }else if(!four){
                 binding.four.setImageResource(imageList[0])
                 four = true
-                imageList[0] = R.drawable.blue
+                imageList[3] = R.drawable.blue
             }
         }
 
@@ -137,14 +149,14 @@ class MainActivity : AppCompatActivity() {
                binding.three.setImageResource(imageList[3])
                 three = true
                 imageList[3] = R.drawable.yellow
-            }else{
+            }else if(!four){
                binding.four.setImageResource(imageList[3])
                 four = true
                 imageList[3] = R.drawable.yellow
             }
         }
 
-       binding.button.setOnClickListener { checkIt() }
+        binding.button.setOnClickListener { checkIt() }
 
     }
 
@@ -170,9 +182,9 @@ class MainActivity : AppCompatActivity() {
 
         when(n1){
             0 -> first = R.drawable.white
-            1 -> first = R.drawable.red
+             1 -> first = R.drawable.red
             2 -> first = R.drawable.yellow
-            3 -> first = R.drawable.blue
+             3 -> first = R.drawable.blue
         }
 
         when(n2){
@@ -195,25 +207,23 @@ class MainActivity : AppCompatActivity() {
             2 -> fourth = R.drawable.yellow
             3 -> fourth = R.drawable.blue
         }
-
+            imageListResult = mutableListOf(first,second,third,fourth)
 
     }
 
     private fun checkIt(){
 
-        if (fourth == imageList[3] || first == imageList[0] || second == imageList[1] || third == imageList[2]){
-            binding.textView.text = "klart"
-            binding.textView2.text = "$fourth == ${imageList[3]} || $first == ${imageList[0]} || $second == ${imageList[1]} || $third == ${imageList[2]}"
+        binding.p1.setImageResource(imageList[0])
+        binding.p2.setImageResource(imageList[1])
+        binding.p3.setImageResource(imageList[2])
+        binding.p4.setImageResource(imageList[3])
+
+        if (fourth == imageList[3] && first == imageList[0] && second == imageList[1] && third == imageList[2]){
+            binding.textView.setText("BRA JOBBAT!! KLART!!")
         }else{
-
-       binding.textView.text = "inte klart än"
-
-        binding.textView2.text = " ${imageList[0]} & ${imageList[3]} & ${imageList[3]} & ${imageList[3]}  ve  = $first ve $second ve $third ve $fourth "
-
+             binding.textView.setText("inte klart än")
         }
     }
-
-
 
 }
 
