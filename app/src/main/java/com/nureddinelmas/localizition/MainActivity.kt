@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         findColor()
+
         binding.one.setImageResource(imageListResult[0] as Int)
         binding.two.setImageResource(imageListResult[1] as Int)
         binding.three.setImageResource(imageListResult[2] as Int)
@@ -42,7 +43,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.one.setOnClickListener {
             binding.one.setImageResource(R.drawable.ic_launcher_background)
-
             one = false
         }
 
@@ -65,27 +65,24 @@ class MainActivity : AppCompatActivity() {
             if (!one){
                 binding.one.setImageResource(imageList[1])
                 one = true
-                imageList[0] = R.drawable.red
-               // binding.one.tag = "red"
+                binding.one.tag ="red"
             }
             else if (!two){
                 binding.two.setImageResource(imageList[1])
                 two=true
-                imageList[1] = R.drawable.red
-               // binding.two.tag = "red"
-
-            } else if(!three){
+                binding.two.tag = "red"
+            }
+            else if(!three){
                 binding.three.setImageResource(imageList[1])
                 three = true
-                imageList[2] = R.drawable.red
                 binding.textView.text = "Det blev röd på trean"
-                //binding.three.tag = "red"
-            }else if(!four){
+                binding.three.tag = "red"
+            }
+            else if(!four){
                 binding.four.setImageResource(imageList[1])
                 four = true
-                imageList[3] = R.drawable.red
                 binding.textView.text = "Det blev röd på fyran"
-                //binding.four.tag = "red"
+                binding.four.tag = "red"
             }
         }
 
@@ -93,23 +90,24 @@ class MainActivity : AppCompatActivity() {
             if (!one){
                 binding.one.setImageResource(imageList[2])
                 one = true
-                imageList[0] = R.drawable.white
+                binding.one.tag = "white"
             }
             else if (!two){
                 binding.two.setImageResource(imageList[2])
                 two=true
-                imageList[1] = R.drawable.white
-            } else if(!three){
+                binding.two.tag = "white"
+            }
+            else if(!three){
                 binding.three.setImageResource(imageList[2])
                 three = true
-                imageList[2] = R.drawable.white
                 binding.textView.setText("Det blev vit på trean")
-
-            }else if(!four){
+                binding.three.tag = "white"
+            }
+            else if(!four){
                 binding.four.setImageResource(imageList[2])
                 four = true
-                imageList[3] = R.drawable.white
                 binding.textView.setText("det blev vit på fyran")
+                binding.four.tag = "white"
             }
         }
 
@@ -117,20 +115,22 @@ class MainActivity : AppCompatActivity() {
             if (!one){
                 binding.one.setImageResource(imageList[0])
                 one = true
-                imageList[0] = R.drawable.blue
+                binding.one.tag = "blue"
             }
             else if (!two){
                 binding.two.setImageResource(imageList[0])
                 two = true
-                imageList[1] = R.drawable.blue
-            }else if(!three){
+                binding.two.tag = "blue"
+            }
+            else if(!three){
                 binding.three.setImageResource(imageList[0])
                 three = true
-                imageList[2] = R.drawable.blue
-            }else if(!four){
+                binding.three.tag = "blue"
+            }
+            else if(!four){
                 binding.four.setImageResource(imageList[0])
                 four = true
-                imageList[3] = R.drawable.blue
+                binding.four.tag = "blue"
             }
         }
 
@@ -138,21 +138,22 @@ class MainActivity : AppCompatActivity() {
             if (!one){
                 binding.one.setImageResource(imageList[3])
                 one = true
-                imageList[3] = R.drawable.yellow
+                binding.one.tag = "yellow"
             }
             else if (!two){
               binding.two.setImageResource(imageList[3])
                 two = true
-                imageList[3] = R.drawable.yellow
-
-            }else if(!three){
+                binding.two.tag = "yellow"
+            }
+            else if(!three){
                binding.three.setImageResource(imageList[3])
                 three = true
-                imageList[3] = R.drawable.yellow
-            }else if(!four){
+                binding.three.tag = "yellow"
+            }
+            else if(!four){
                binding.four.setImageResource(imageList[3])
                 four = true
-                imageList[3] = R.drawable.yellow
+                binding.four.tag = "yellow"
             }
         }
 
@@ -212,6 +213,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkIt(){
+        createNewImageList()
 
         binding.p1.setImageResource(imageList[0])
         binding.p2.setImageResource(imageList[1])
@@ -220,8 +222,45 @@ class MainActivity : AppCompatActivity() {
 
         if (fourth == imageList[3] && first == imageList[0] && second == imageList[1] && third == imageList[2]){
             binding.textView.setText("BRA JOBBAT!! KLART!!")
+            binding.button.text = "Spel Igen"
         }else{
              binding.textView.setText("inte klart än")
+            binding.button.text = "Försök Igen"
+        }
+
+    }
+
+
+    fun createNewImageList(){
+        println("${binding.one.tag}")
+        println("${binding.two.tag}")
+        println("${binding.three.tag}")
+        println("${binding.four.tag}")
+
+
+        when(binding.one.tag){
+            "red" -> imageList[0] = R.drawable.red
+            "white" -> imageList[0] = R.drawable.white
+            "blue" -> imageList[0] = R.drawable.blue
+            "yellow" -> imageList[0] = R.drawable.yellow
+        }
+        when(binding.two.tag){
+            "red" -> imageList[1] = R.drawable.red
+            "white" -> imageList[1] = R.drawable.white
+            "blue" -> imageList[1] = R.drawable.blue
+            "yellow" -> imageList[1] = R.drawable.yellow
+        }
+        when(binding.three.tag){
+            "red" -> imageList[2] = R.drawable.red
+            "white" -> imageList[2] = R.drawable.white
+            "blue" -> imageList[2] = R.drawable.blue
+            "yellow" -> imageList[2] = R.drawable.yellow
+        }
+        when(binding.four.tag){
+            "red" -> imageList[3] = R.drawable.red
+            "white" -> imageList[3] = R.drawable.white
+            "blue" -> imageList[3] = R.drawable.blue
+            "yellow" -> imageList[3] = R.drawable.yellow
         }
     }
 
