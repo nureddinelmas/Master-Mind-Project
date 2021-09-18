@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.android.material.internal.NavigationMenu
 import com.nureddinelmas.localizition.databinding.ActivityMainBinding
 import kotlin.properties.Delegates
 
@@ -18,14 +19,15 @@ class MainActivity : AppCompatActivity() {
     var three : Boolean =false
     var four : Boolean =false
 
-    var first : Int? = null
-    var second : Int? = null
-    var third : Int? = null
-    var fourth : Int? = null
+
+    var first : Int = 0
+    var second : Int = 0
+    var third : Int = 0
+    var fourth : Int = 0
 
     var imageList = mutableListOf(R.drawable.blue, R.drawable.red, R.drawable.white, R.drawable.yellow)
-    var imageListResult = mutableListOf(first, second, third, fourth)
 
+    var imageListResult = mutableListOf(first, second, third, fourth)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +36,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         findColor()
+
+
 
         binding.one.setImageResource(imageListResult[0] as Int)
         binding.two.setImageResource(imageListResult[1] as Int)
@@ -157,7 +161,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.button.setOnClickListener { checkIt() }
+       // binding.button.setOnClickListener { checkIt() }
 
     }
 
@@ -213,30 +217,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkIt(){
+
         createNewImageList()
 
-        binding.p1.setImageResource(imageList[0])
-        binding.p2.setImageResource(imageList[1])
-        binding.p3.setImageResource(imageList[2])
-        binding.p4.setImageResource(imageList[3])
 
         if (fourth == imageList[3] && first == imageList[0] && second == imageList[1] && third == imageList[2]){
-            binding.textView.setText("BRA JOBBAT!! KLART!!")
+            binding.textView.text = "BRA JOBBAT!! KLART!!"
             binding.button.text = "Spel Igen"
         }else{
-             binding.textView.setText("inte klart än")
+
+         //  binding.p1.setImageResource(imageList[0])
+          // binding.p2.setImageResource(imageList[1])
+          // binding.p3.setImageResource(imageList[2])
+          // binding.p4.setImageResource(imageList[3])
+
+            binding.textView.text = "inte klart än"
             binding.button.text = "Försök Igen"
         }
 
     }
 
 
-    fun createNewImageList(){
-        println("${binding.one.tag}")
-        println("${binding.two.tag}")
-        println("${binding.three.tag}")
-        println("${binding.four.tag}")
-
+    private fun createNewImageList(){
 
         when(binding.one.tag){
             "red" -> imageList[0] = R.drawable.red
@@ -264,5 +266,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+    fun resultListFragment(view : View){
+        val resultFragment = Result()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.add(R.id.frameLayout, resultFragment, "result")
+        transaction.commit()
+        checkIt()
+    }
 }
 
