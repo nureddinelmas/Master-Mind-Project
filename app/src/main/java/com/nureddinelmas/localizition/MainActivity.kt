@@ -21,8 +21,9 @@ class MainActivity : AppCompatActivity() {
     var fourth : Int = 0
 
     var wrong = 0
+    var right = 0
 
-    var imageList = mutableListOf(R.drawable.red, R.drawable.white, R.drawable.blue, R.drawable.yellow)
+    var imageList = mutableListOf(R.drawable.red, R.drawable.white, R.drawable.blue, R.drawable.yellow, R.drawable.black, R.drawable.green)
 
     var imageListResult = mutableListOf(first, second, third, fourth)
 
@@ -173,27 +174,89 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.button.setOnClickListener{ checkIt() }
+        binding.black.setOnClickListener {
+            if (!one){
+                binding.one.setImageResource(R.drawable.black)
+                one = true
+                binding.one.tag = "black"
+            }
+            else if (!two){
+                binding.two.setImageResource(R.drawable.black)
+                two = true
+                binding.two.tag = "black"
+            }
+            else if(!three){
+                binding.three.setImageResource(R.drawable.black)
+                three = true
+                binding.three.tag = "black"
+            }
+            else if(!four){
+                binding.four.setImageResource(R.drawable.black)
+                four = true
+                binding.four.tag = "black"
+            }
+        }
+
+        binding.green.setOnClickListener {
+            if (!one){
+                binding.one.setImageResource(R.drawable.green)
+                one = true
+                binding.one.tag = "green"
+            }
+            else if (!two){
+                binding.two.setImageResource(R.drawable.green)
+                two = true
+                binding.two.tag = "green"
+            }
+            else if(!three){
+                binding.three.setImageResource(R.drawable.green)
+                three = true
+                binding.three.tag = "green"
+            }
+            else if(!four){
+                binding.four.setImageResource(R.drawable.green)
+                four = true
+                binding.four.tag = "green"
+            }
+        }
+
+        binding.button.setOnClickListener{
+            if(binding.button.text == "Play Again"){
+                binding.button.text = "Check It"
+            }else{
+                checkIt()
+            }
+                }
 
     }
 
     private fun findColor() {
 
 
-        var n1 = (0..3).random()
-        var n2 = (0..3).random()
+        var n1 = (0..5).random()
+        var n2 = (0..5).random()
         while (n1 == n2){
-            n2 = (0..3).random()
+            n2 = (0..5).random()
         }
 
-        var n3 = (0..3).random()
+        var n3 = (0..5).random()
         while (n3 == n1 || n3 == n2){
-           n3 = (0..3).random()
+           n3 = (0..5).random()
         }
 
-        var n4 = (0..3).random()
+        var n4 = (0..5).random()
         while (n4 == n1 || n4 == n2 || n4 == n3 ){
-            n4 = (0..3).random()
+            n4 = (0..5).random()
+        }
+
+        var n5 = (0..5).random()
+        while(n5 == n1 || n5 == n2 || n5 == n3 || n5 == n4){
+            n5 = (0..5).random()
+        }
+
+        var n6 = (0..5).random()
+        while(n6 == n1 || n6 == n2 || n6 == n3 || n6 == n4 || n6 == n5){
+            n6 = (0..5).random()
         }
 
 
@@ -202,6 +265,8 @@ class MainActivity : AppCompatActivity() {
              1 -> first = R.drawable.red
             2 -> first = R.drawable.yellow
              3 -> first = R.drawable.blue
+            4 -> first = R.drawable.black
+            5 -> first = R.drawable.green
         }
 
         when(n2){
@@ -209,6 +274,8 @@ class MainActivity : AppCompatActivity() {
             1 -> second = R.drawable.red
             2 -> second = R.drawable.yellow
             3 -> second = R.drawable.blue
+            4 -> second = R.drawable.black
+            5 -> second = R.drawable.green
         }
 
         when(n3){
@@ -216,6 +283,9 @@ class MainActivity : AppCompatActivity() {
             1 -> third = R.drawable.red
             2 -> third = R.drawable.yellow
             3 -> third = R.drawable.blue
+            4 -> third = R.drawable.black
+            5 -> third = R.drawable.green
+
         }
 
         when(n4){
@@ -223,6 +293,8 @@ class MainActivity : AppCompatActivity() {
             1 -> fourth = R.drawable.red
             2 -> fourth = R.drawable.yellow
             3 -> fourth = R.drawable.blue
+            4 -> fourth == R.drawable.black
+            5 -> fourth = R.drawable.green
         }
             imageListResult = mutableListOf(first,second,third,fourth)
 
@@ -231,7 +303,7 @@ class MainActivity : AppCompatActivity() {
     private fun checkIt(){
 
         wrong = 0
-
+        right = 0
         createNewImageList()
 
         if (fourth != imageList[3]){
@@ -248,12 +320,27 @@ class MainActivity : AppCompatActivity() {
             wrong += 1
         }
 
+        if (fourth == imageList[3]){
+            right += 1
+        }
+
+        if (first == imageList[0]){
+            right += 1
+        }
+        if (second == imageList[1]){
+            right == 1
+        }
+        if (third == imageList[2]){
+            right += 1
+        }
+
         if (fourth == imageList[3] && first == imageList[0] && second == imageList[1] && third == imageList[2]){
-            binding.textView.text = "BRA JOBBAT!! KLART!!"
-            binding.button.text = "Spel Igen"
+            binding.textView.text = "BRA JOBBAT!! KLART!! :)))"
+            binding.button.text = "Play Again"
+            findColor()
         }else{
-            binding.button.text = "Ett Försök Till"
-            binding.textView.text = "inte klart än du har $wrong felplace"
+            binding.button.text = "Try One More Time"
+            binding.textView.text = "NOT YET DONE!"
             oneMoreTime()
         }
 
@@ -267,31 +354,39 @@ class MainActivity : AppCompatActivity() {
             "white" -> imageList[0] = R.drawable.white
             "blue" -> imageList[0] = R.drawable.blue
             "yellow" -> imageList[0] = R.drawable.yellow
+            "black" -> imageList[0] = R.drawable.black
+            "green" -> imageList[0] = R.drawable.green
         }
         when(binding.two.tag){
             "red" -> imageList[1] = R.drawable.red
             "white" -> imageList[1] = R.drawable.white
             "blue" -> imageList[1] = R.drawable.blue
             "yellow" -> imageList[1] = R.drawable.yellow
+            "black" -> imageList[1] = R.drawable.black
+            "green" -> imageList[1] = R.drawable.green
         }
         when(binding.three.tag){
             "red" -> imageList[2] = R.drawable.red
             "white" -> imageList[2] = R.drawable.white
             "blue" -> imageList[2] = R.drawable.blue
             "yellow" -> imageList[2] = R.drawable.yellow
+            "black" -> imageList[2] = R.drawable.black
+            "green" -> imageList[2] = R.drawable.green
         }
         when(binding.four.tag){
             "red" -> imageList[3] = R.drawable.red
             "white" -> imageList[3] = R.drawable.white
             "blue" -> imageList[3] = R.drawable.blue
             "yellow" -> imageList[3] = R.drawable.yellow
+            "black" -> imageList[3] = R.drawable.black
+            "green" -> imageList[3] = R.drawable.green
         }
     }
 
     private fun  oneMoreTime(){
 
 
-        imageLook.add(ResultLook(imageList[0], imageList[1], imageList[2], imageList[3]))
+        imageLook.add(ResultLook(imageList[0], imageList[1], imageList[2], imageList[3], "$wrong wrong place", "$right right place"))
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         val adapter = ResultAdapter(imageLook)

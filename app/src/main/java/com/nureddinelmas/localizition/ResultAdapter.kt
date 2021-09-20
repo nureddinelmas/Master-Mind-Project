@@ -20,6 +20,8 @@ class ResultAdapter(private val imageLook: ArrayList<ResultLook>) : RecyclerView
         holder.binding.p2.setImageResource(imageLook[position].second)
         holder.binding.p3.setImageResource(imageLook[position].third)
         holder.binding.p4.setImageResource(imageLook[position].fourth)
+        holder.binding.wrongPlaceText.text = imageLook[position].lookWrong
+        holder.binding.rightPlaceText.text= imageLook[position].lookRight
     }
 
     override fun getItemCount(): Int {

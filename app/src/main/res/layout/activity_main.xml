@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#87A9E6"
     tools:context=".MainActivity">
 
 
@@ -76,31 +77,47 @@
 
         <ImageView
             android:id="@+id/red"
-            android:layout_width="80dp"
+            android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_margin="2dp"
             app:srcCompat="@drawable/red" />
 
         <ImageView
             android:id="@+id/white"
-            android:layout_width="80dp"
+            android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_margin="2dp"
             app:srcCompat="@drawable/white" />
 
         <ImageView
             android:id="@+id/blue"
-            android:layout_width="80dp"
+            android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_margin="2dp"
             app:srcCompat="@drawable/blue" />
 
         <ImageView
             android:id="@+id/yellow"
-            android:layout_width="80dp"
+            android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_margin="2dp"
             app:srcCompat="@drawable/yellow" />
+
+        <ImageView
+            android:id="@+id/black"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="2dp"
+            app:srcCompat="@drawable/black"
+            tools:srcCompat="@drawable/black" />
+
+        <ImageView
+            android:id="@+id/green"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="2dp"
+            app:srcCompat="@drawable/green"
+            tools:srcCompat="@drawable/green" />
 
     </LinearLayout>
 
