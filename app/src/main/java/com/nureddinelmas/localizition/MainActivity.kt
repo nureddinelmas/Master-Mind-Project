@@ -3,6 +3,7 @@ package com.nureddinelmas.localizition
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -60,10 +61,24 @@ class MainActivity : AppCompatActivity() {
 
         findColor()
 
-        binding.one.setImageResource(imageListResult[0] as Int)
-        binding.two.setImageResource(imageListResult[1] as Int)
-        binding.three.setImageResource(imageListResult[2] as Int)
-        binding.four.setImageResource(imageListResult[3] as Int)
+        binding.linearLayout3.setOnTouchListener { view, motionEvent ->
+            when(motionEvent?.action){
+                MotionEvent.ACTION_UP -> {
+                    binding.one.setImageResource(imageListResult[0] as Int)
+                    binding.two.setImageResource(imageListResult[1] as Int)
+                    binding.three.setImageResource(imageListResult[2] as Int)
+                    binding.four.setImageResource(imageListResult[3] as Int)}
+                    MotionEvent.ACTION_DOWN ->{
+                        binding.one.setImageResource(R.drawable.question)
+                        binding.two.setImageResource(R.drawable.question)
+                        binding.three.setImageResource(R.drawable.question)
+                        binding.four.setImageResource(R.drawable.question)
+                    }
+            }
+            true
+        }
+
+
 
 
         binding.one.setOnClickListener {

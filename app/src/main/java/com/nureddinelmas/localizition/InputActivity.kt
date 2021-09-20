@@ -14,19 +14,19 @@ class InputActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        if (binding.editTextTextPersonName.text.equals("") || binding.editTextTextPersonName2.text.equals("")){
-            binding.editTextTextPersonName.error = "Enter a player name!!"
-            binding.editTextTextPersonName2.error = "Enter a player name!!"
-        }
+        binding.inputButton.setOnClickListener{
+            if (binding.playerOneEditText.text != null && binding.playerTwoEditText.text != null){
+                val intent = Intent(this@InputActivity, MainActivity::class.java)
+                intent.putExtra("info", 1)
+                intent.putExtra("player1", binding.playerOneEditText.text.toString())
+                intent.putExtra("player2", binding.playerTwoEditText.text.toString())
+                startActivity(intent)
+                finish()
 
-
-        binding.button.setOnClickListener{
-            val intent = Intent(this@InputActivity, MainActivity::class.java)
-            intent.putExtra("info", 1)
-            intent.putExtra("player1", binding.editTextTextPersonName.text.toString())
-            intent.putExtra("player2", binding.editTextTextPersonName2.text.toString())
-            startActivity(intent)
-            finish()
+            } else{
+                binding.playerOneEditText.error = "Enter a player name!!"
+                binding.playerTwoEditText.error = "Enter a player name!!"
+            }
         }
     }
 }

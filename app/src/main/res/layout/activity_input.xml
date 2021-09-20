@@ -19,7 +19,7 @@
         tools:layout_editor_absoluteX="3dp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/playerOneEditText"
         android:layout_width="253dp"
         android:layout_height="49dp"
         android:layout_marginStart="14dp"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/playerTwoEditText"
         android:layout_width="254dp"
         android:layout_height="53dp"
         android:layout_marginStart="13dp"
@@ -40,7 +40,7 @@
         android:hint="Enter a player name"
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/playerOneEditText" />
 
     <TextView
         android:id="@+id/textView2"
@@ -54,14 +54,14 @@
         tools:layout_editor_absoluteX="3dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/inputButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:backgroundTint="#CA7668"
         android:text="Play Now"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
+        app:layout_constraintTop_toBottomOf="@+id/playerTwoEditText"
         tools:layout_editor_absoluteX="3dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
