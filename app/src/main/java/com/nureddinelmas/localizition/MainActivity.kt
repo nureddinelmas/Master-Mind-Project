@@ -37,15 +37,15 @@ class MainActivity : AppCompatActivity() {
 
 
         findColor()
-/*
+
         binding.one.setImageResource(imageListResult[0] as Int)
         binding.two.setImageResource(imageListResult[1] as Int)
         binding.three.setImageResource(imageListResult[2] as Int)
         binding.four.setImageResource(imageListResult[3] as Int)
 
-*/
+
         binding.one.setOnClickListener {
-            binding.one.setImageResource(R.drawable.ic_launcher_background)
+            binding.one.setImageResource(R.drawable.question)
             one = false
 
             two = true
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.two.setOnClickListener {
-            binding.two.setImageResource(R.drawable.ic_launcher_background)
+            binding.two.setImageResource(R.drawable.question)
             two = false
 
             one = true
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.three.setOnClickListener {
-            binding.three.setImageResource(R.drawable.ic_launcher_background)
+            binding.three.setImageResource(R.drawable.question)
             three = false
 
             one = true
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.four.setOnClickListener {
-            binding.four.setImageResource(R.drawable.ic_launcher_background)
+            binding.four.setImageResource(R.drawable.question)
             four = false
 
             one = true
@@ -83,22 +83,22 @@ class MainActivity : AppCompatActivity() {
 
         binding.red.setOnClickListener {
             if (!one){
-                binding.one.setImageResource(imageList[0])
+                binding.one.setImageResource(R.drawable.red)
                 one = true
                 binding.one.tag ="red"
             }
             else if (!two){
-                binding.two.setImageResource(imageList[0])
+                binding.two.setImageResource(R.drawable.red)
                 two=true
                 binding.two.tag = "red"
             }
             else if(!three){
-                binding.three.setImageResource(imageList[0])
+                binding.three.setImageResource(R.drawable.red)
                 three = true
                 binding.three.tag = "red"
             }
             else if(!four){
-                binding.four.setImageResource(imageList[0])
+                binding.four.setImageResource(R.drawable.red)
                 four = true
                 binding.four.tag = "red"
             }
@@ -106,22 +106,22 @@ class MainActivity : AppCompatActivity() {
 
         binding.white.setOnClickListener {
             if (!one){
-                binding.one.setImageResource(imageList[1])
+                binding.one.setImageResource(R.drawable.white)
                 one = true
                 binding.one.tag = "white"
             }
             else if (!two){
-                binding.two.setImageResource(imageList[1])
+                binding.two.setImageResource(R.drawable.white)
                 two=true
                 binding.two.tag = "white"
             }
             else if(!three){
-                binding.three.setImageResource(imageList[1])
+                binding.three.setImageResource(R.drawable.white)
                 three = true
                 binding.three.tag = "white"
             }
             else if(!four){
-                binding.four.setImageResource(imageList[1])
+                binding.four.setImageResource(R.drawable.white)
                 four = true
                 binding.four.tag = "white"
             }
@@ -129,22 +129,22 @@ class MainActivity : AppCompatActivity() {
 
         binding.blue.setOnClickListener {
             if (!one){
-                binding.one.setImageResource(imageList[2])
+                binding.one.setImageResource(R.drawable.blue)
                 one = true
                 binding.one.tag = "blue"
             }
             else if (!two){
-                binding.two.setImageResource(imageList[2])
+                binding.two.setImageResource(R.drawable.blue)
                 two = true
                 binding.two.tag = "blue"
             }
             else if(!three){
-                binding.three.setImageResource(imageList[2])
+                binding.three.setImageResource(R.drawable.blue)
                 three = true
                 binding.three.tag = "blue"
             }
             else if(!four){
-                binding.four.setImageResource(imageList[2])
+                binding.four.setImageResource(R.drawable.blue)
                 four = true
                 binding.four.tag = "blue"
             }
@@ -152,22 +152,22 @@ class MainActivity : AppCompatActivity() {
 
         binding.yellow.setOnClickListener {
             if (!one){
-                binding.one.setImageResource(imageList[3])
+                binding.one.setImageResource(R.drawable.yellow)
                 one = true
                 binding.one.tag = "yellow"
             }
             else if (!two){
-              binding.two.setImageResource(imageList[3])
+              binding.two.setImageResource(R.drawable.yellow)
                 two = true
                 binding.two.tag = "yellow"
             }
             else if(!three){
-               binding.three.setImageResource(imageList[3])
+               binding.three.setImageResource(R.drawable.yellow)
                 three = true
                 binding.three.tag = "yellow"
             }
             else if(!four){
-               binding.four.setImageResource(imageList[3])
+               binding.four.setImageResource(R.drawable.yellow)
                 four = true
                 binding.four.tag = "yellow"
             }
@@ -230,6 +230,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkIt(){
 
+        wrong = 0
 
         createNewImageList()
 
@@ -253,7 +254,7 @@ class MainActivity : AppCompatActivity() {
         }else{
             binding.button.text = "Ett Försök Till"
             binding.textView.text = "inte klart än du har $wrong felplace"
-            ettForsokTill()
+            oneMoreTime()
         }
 
     }
@@ -287,7 +288,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun  ettForsokTill(){
+    private fun  oneMoreTime(){
 
 
         imageLook.add(ResultLook(imageList[0], imageList[1], imageList[2], imageList[3]))
