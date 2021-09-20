@@ -1,9 +1,11 @@
 package com.nureddinelmas.localizition
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.nureddinelmas.localizition.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +25,9 @@ class MainActivity : AppCompatActivity() {
     var wrong = 0
     var right = 0
 
+    var player1 : String? = ""
+    var player2 : String? = ""
+
     var imageList = mutableListOf(R.drawable.red, R.drawable.white, R.drawable.blue, R.drawable.yellow, R.drawable.black, R.drawable.green)
 
     var imageListResult = mutableListOf(first, second, third, fourth)
@@ -36,6 +41,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
 
+        if (binding.button.text == "Enter Players"){
+        binding.linearLayout3.visibility = View.INVISIBLE
+        binding.linearLayout2.visibility = View.INVISIBLE
+        }
+
+
+
+        val intent = intent
+        val entre = intent.getIntExtra("info", 0)
+        player1 = intent.getStringExtra("player1")
+        player2 = intent.getStringExtra("player2")
+        if (entre == 1){
+            binding.button.text = "Check It !"
+            binding.linearLayout3.visibility = View.VISIBLE
+            binding.linearLayout2.visibility = View.VISIBLE
+        }
 
         findColor()
 
@@ -221,13 +242,20 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.button.setOnClickListener{
-            if(binding.button.text == "Play Again"){
-                binding.button.text = "Check It"
-            }else{
-                checkIt()
+
+            when (binding.button.text) {
+                "Play Again" -> {
+                    binding.button.text = "Check It"
+                }
+                "Enter Players" -> {
+                    val intent = Intent(this@MainActivity,InputActivity::class.java)
+                    startActivity(intent) }
+                "Play Now" -> {binding.button.text = "Check It !"
+                }
+                "Check It !" -> { checkIt() }
+                "Try One More Time" -> { checkIt() }
             }
                 }
-
     }
 
     private fun findColor() {
@@ -338,9 +366,11 @@ class MainActivity : AppCompatActivity() {
             binding.textView.text = "BRA JOBBAT!! KLART!! :)))"
             binding.button.text = "Play Again"
             findColor()
+            imageLook.clear()
         }else{
-            binding.button.text = "Try One More Time"
+            Snackbar.make(binding.root,"Misslyckades :(( ", Snackbar.LENGTH_INDEFINITE).setAction("${player1}! avsluta spelet?", View.OnClickListener { finish() }).show()
             binding.textView.text = "NOT YET DONE!"
+            binding.button.text = "Try One More Time"
             oneMoreTime()
         }
 

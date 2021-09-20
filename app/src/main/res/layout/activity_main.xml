@@ -62,7 +62,9 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Check IT!"
+        android:backgroundTint="#CA7668"
+        android:text="Enter Players"
+        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -123,8 +125,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="407dp"
-        android:layout_height="456dp"
+        android:layout_width="402dp"
+        android:layout_height="432dp"
         android:layout_marginTop="1dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
