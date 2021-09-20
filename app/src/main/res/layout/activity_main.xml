@@ -52,7 +52,6 @@
         android:layout_width="match_parent"
         android:layout_height="37dp"
         android:gravity="center"
-        android:text="RESULT "
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -125,9 +124,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="402dp"
-        android:layout_height="432dp"
-        android:layout_marginTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="426dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"

@@ -245,7 +245,9 @@ class MainActivity : AppCompatActivity() {
 
             when (binding.button.text) {
                 "Play Again" -> {
-                    binding.button.text = "Check It"
+                    binding.button.text = "Check It !"
+                    binding.textView.text = ""
+                     imageLook.clear()
                 }
                 "Enter Players" -> {
                     val intent = Intent(this@MainActivity,InputActivity::class.java)
@@ -366,9 +368,9 @@ class MainActivity : AppCompatActivity() {
             binding.textView.text = "BRA JOBBAT!! KLART!! :)))"
             binding.button.text = "Play Again"
             findColor()
-            imageLook.clear()
+
         }else{
-            Snackbar.make(binding.root,"Misslyckades :(( ", Snackbar.LENGTH_INDEFINITE).setAction("${player1}! avsluta spelet?", View.OnClickListener { finish() }).show()
+            Snackbar.make(binding.root,"Misslyckades :(( ", Snackbar.LENGTH_LONG).setAction("${player1}! avsluta spelet?", View.OnClickListener { finish() }).show()
             binding.textView.text = "NOT YET DONE!"
             binding.button.text = "Try One More Time"
             oneMoreTime()
@@ -414,8 +416,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun  oneMoreTime(){
-
-
         imageLook.add(ResultLook(imageList[0], imageList[1], imageList[2], imageList[3], "$wrong wrong place", "$right right place"))
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
