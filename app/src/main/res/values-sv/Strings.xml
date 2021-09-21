@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Localization</string>
+    <string name="app_name">Master Mind</string>
     <string name="greeting">Hej ocg Wälkommen!</string>
     <string name="button_text">Tryck</string>
     <string name="new_greeting">Hej %1$s, Välkommen!</string>

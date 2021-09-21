@@ -1,10 +1,11 @@
-package com.nureddinelmas.localizition
+package com.nureddinelmas.mastermind
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.nureddinelmas.localizition.databinding.ActivityInputBinding
+
 
 class InputActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInputBinding

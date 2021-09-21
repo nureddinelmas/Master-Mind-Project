@@ -1,4 +1,4 @@
-package com.nureddinelmas.localizition
+package com.nureddinelmas.mastermind
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,7 @@ import android.view.View
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import com.nureddinelmas.localizition.R
 import com.nureddinelmas.localizition.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -30,7 +31,14 @@ class MainActivity : AppCompatActivity() {
     var player1 : String? = ""
     var player2 : String? = ""
 
-    var imageList = mutableListOf(R.drawable.red, R.drawable.white, R.drawable.blue, R.drawable.yellow, R.drawable.black, R.drawable.green)
+    var imageList = mutableListOf(
+        R.drawable.red,
+        R.drawable.white,
+        R.drawable.blue,
+        R.drawable.yellow,
+        R.drawable.black,
+        R.drawable.green
+    )
 
     var imageListResult = mutableListOf(first, second, third, fourth)
 
@@ -262,7 +270,7 @@ class MainActivity : AppCompatActivity() {
                      imageLook.clear()
                 }
                 "Enter Players" -> {
-                    val intent = Intent(this@MainActivity,InputActivity::class.java)
+                    val intent = Intent(this@MainActivity, InputActivity::class.java)
                     startActivity(intent) }
                 "Play Now" -> {binding.button.text = "Check It !"
                 }

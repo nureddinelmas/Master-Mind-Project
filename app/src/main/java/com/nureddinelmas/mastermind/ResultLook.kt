@@ -1,4 +1,4 @@
-package com.nureddinelmas.localizition
+package com.nureddinelmas.mastermind
 
 import java.io.Serializable
 
