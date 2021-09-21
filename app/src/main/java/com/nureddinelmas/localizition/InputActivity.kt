@@ -1,9 +1,8 @@
-package com.nureddinelmas.mastermind
+package com.nureddinelmas.localizition
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.nureddinelmas.localizition.databinding.ActivityInputBinding
 
 
@@ -16,7 +15,8 @@ class InputActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.inputButton.setOnClickListener{
-            if (binding.playerOneEditText.text != null && binding.playerTwoEditText.text != null){
+            if (binding.playerOneEditText.text.toString() != "" && binding.playerTwoEditText.text.toString() != ""){
+
                 val intent = Intent(this@InputActivity, MainActivity::class.java)
                 intent.putExtra("info", 1)
                 intent.putExtra("player1", binding.playerOneEditText.text.toString())

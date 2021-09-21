@@ -1,15 +1,14 @@
-package com.nureddinelmas.mastermind
+package com.nureddinelmas.localizition
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import com.nureddinelmas.localizition.R
 import com.nureddinelmas.localizition.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
@@ -28,8 +27,10 @@ class MainActivity : AppCompatActivity() {
     var wrong = 0
     var right = 0
 
-    var player1 : String? = ""
-    var player2 : String? = ""
+    lateinit var player1 : String
+    lateinit var player2 : String
+    var player : String = ""
+    var playerKontrol : Int = 0
 
     var imageList = mutableListOf(
         R.drawable.red,
@@ -56,12 +57,10 @@ class MainActivity : AppCompatActivity() {
         binding.linearLayout2.visibility = View.INVISIBLE
         }
 
-
-
         val intent = intent
         val entre = intent.getIntExtra("info", 0)
-        player1 = intent.getStringExtra("player1")
-        player2 = intent.getStringExtra("player2")
+        player1 = intent.getStringExtra("player1").toString()
+        player2 = intent.getStringExtra("player2").toString()
         if (entre == 1){
             binding.button.text = "Check It !"
             binding.linearLayout3.visibility = View.VISIBLE
@@ -274,8 +273,14 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent) }
                 "Play Now" -> {binding.button.text = "Check It !"
                 }
-                "Check It !" -> { checkIt() }
-                "Try One More Time" -> { checkIt() }
+                "Check It !" -> {
+                    playerKontrol += 1
+                    playerChoose(player1,player2)
+                    checkIt() }
+                "Try One More Time" -> {
+                    playerKontrol += 1
+                    playerChoose(player1,player2)
+                    checkIt() }
             }
                 }
     }
@@ -385,12 +390,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (fourth == imageList[3] && first == imageList[0] && second == imageList[1] && third == imageList[2]){
-            binding.textView.text = "BRA JOBBAT!! KLART!! :)))"
+            binding.textView.text = "${player}!! DU VIN, BRA JOBBAT!! KLART!! :)))"
             binding.button.text = "Play Again"
             findColor()
 
         }else{
-            Snackbar.make(binding.root,"Misslyckades :(( ", Snackbar.LENGTH_LONG).setAction("${player1}! avsluta spelet?", View.OnClickListener { finish() }).show()
+            Snackbar.make(binding.root,"Misslyckades :(( ", Snackbar.LENGTH_LONG).setAction("${player}! avsluta spelet?", View.OnClickListener { finish() }).show()
             binding.textView.text = "NOT YET DONE!"
             binding.button.text = "Try One More Time"
             oneMoreTime()
@@ -436,12 +441,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun  oneMoreTime(){
-        imageLook.add(ResultLook(imageList[0], imageList[1], imageList[2], imageList[3], "$wrong wrong place", "$right right place"))
+        imageLook.add(ResultLook(imageList[0], imageList[1], imageList[2], imageList[3], "$wrong wrong place", "$right right place", "$player"))
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         val adapter = ResultAdapter(imageLook)
         binding.recyclerView.adapter = adapter
 
+    }
+
+    private fun playerChoose(player1 : String, player2: String) : String{
+        player = if (playerKontrol % 2 == 0){
+            player1
+        }else{
+            player2
+        }
+        return player
     }
 
 }

@@ -1,4 +1,4 @@
-package com.nureddinelmas.mastermind
+package com.nureddinelmas.localizition
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -22,6 +22,7 @@ class ResultAdapter(private val imageLook: ArrayList<ResultLook>) : RecyclerView
         holder.binding.p4.setImageResource(imageLook[position].fourth)
         holder.binding.wrongPlaceText.text = imageLook[position].lookWrong
         holder.binding.rightPlaceText.text= imageLook[position].lookRight
+        holder.binding.player.text = imageLook[position].player
     }
 
     override fun getItemCount(): Int {

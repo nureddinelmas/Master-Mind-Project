@@ -1,49 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/p1"
-        android:layout_width="60dp"
-        android:layout_height="54dp"
-        android:layout_margin="2dp"
-        tools:srcCompat="@drawable/ic_launcher_background" />
+        <ImageView
+            android:id="@+id/p1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_margin="1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/ic_launcher_background" />
 
-    <ImageView
-        android:id="@+id/p2"
-        android:layout_width="60dp"
-        android:layout_height="54dp"
-        android:layout_margin="2dp"
-        tools:srcCompat="@drawable/ic_launcher_background" />
+        <ImageView
+            android:id="@+id/p2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_margin="1dp"
+            app:layout_constraintStart_toEndOf="@+id/p1"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/ic_launcher_background" />
 
-    <ImageView
-        android:id="@+id/p3"
-        android:layout_width="60dp"
-        android:layout_height="54dp"
-        android:layout_margin="2dp"
-        tools:srcCompat="@drawable/ic_launcher_background" />
+        <ImageView
+            android:id="@+id/p3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_margin="1dp"
+            app:layout_constraintStart_toEndOf="@+id/p2"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/ic_launcher_background" />
 
-    <ImageView
-        android:id="@+id/p4"
-        android:layout_width="60dp"
-        android:layout_height="54dp"
-        android:layout_margin="2dp"
-        tools:srcCompat="@drawable/ic_launcher_background" />
+        <ImageView
+            android:id="@+id/p4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="2dp"
+            android:layout_margin="1dp"
+            app:layout_constraintStart_toEndOf="@+id/p3"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/ic_launcher_background" />
 
-    <TextView
-        android:layout_width="70dp"
-        android:layout_height="54dp"
-        android:id="@+id/wrongPlaceText"
-        android:layout_margin="2dp"
-        />
-    <TextView
-        android:layout_width="70dp"
-        android:layout_height="54dp"
-        android:id="@+id/rightPlaceText"
-        android:layout_margin="2dp"
-        />
-</LinearLayout>
+        <TextView
+            android:id="@+id/wrongPlaceText"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="1dp"
+            android:layout_margin="1dp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintStart_toEndOf="@+id/rightPlaceText"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/player"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintStart_toEndOf="@+id/wrongPlaceText"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/rightPlaceText"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintStart_toEndOf="@+id/p4"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
