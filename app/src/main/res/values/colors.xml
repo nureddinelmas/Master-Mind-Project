@@ -9,6 +9,13 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#E6E408</color>
     <color name="red">#E10A0A</color>
-    <color name="blue">#1C69F1</color>
-    <color name="green">#25ED10</color>
+    <color name="blue">#336BCD</color>
+    <color name="green">#34C625</color>
+    
+    <color name="colorTransparent">#00FFFFFF</color>
+
+    <color name="colorGradientStart">#1FB149</color>
+    <color name="colorGradientCenter">#DCC762</color>
+    <color name="colorGradientEnd">#FF336BCD</color>
+
 </resources>

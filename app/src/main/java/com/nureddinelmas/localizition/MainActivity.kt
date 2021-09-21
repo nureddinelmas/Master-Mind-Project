@@ -268,9 +268,6 @@ class MainActivity : AppCompatActivity() {
                     binding.textView.text = ""
                      imageLook.clear()
                 }
-                "Enter Players" -> {
-                    val intent = Intent(this@MainActivity, InputActivity::class.java)
-                    startActivity(intent) }
                 "Play Now" -> {binding.button.text = "Check It !"
                 }
                 "Check It !" -> {

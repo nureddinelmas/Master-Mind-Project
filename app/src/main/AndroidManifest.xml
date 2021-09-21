@@ -10,10 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.mastermind">
         <activity
-            android:name="com.nureddinelmas.localizition.InputActivity"
+            android:name=".EnterActivity"
             android:exported="true" />
         <activity
-            android:name="com.nureddinelmas.localizition.MainActivity"
+            android:name=".InputActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

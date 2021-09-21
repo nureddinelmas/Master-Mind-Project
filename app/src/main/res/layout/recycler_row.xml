@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="1dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,7 +17,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
-            android:layout_margin="1dp"
+            android:layout_margin="2dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@drawable/ic_launcher_background" />
@@ -27,7 +28,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
-            android:layout_margin="1dp"
+            android:layout_margin="2dp"
             app:layout_constraintStart_toEndOf="@+id/p1"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@drawable/ic_launcher_background" />
@@ -38,7 +39,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
-            android:layout_margin="1dp"
+            android:layout_margin="2dp"
             app:layout_constraintStart_toEndOf="@+id/p2"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@drawable/ic_launcher_background" />
@@ -59,7 +60,7 @@
             android:layout_width="60dp"
             android:layout_height="50dp"
             android:layout_marginStart="1dp"
-            android:layout_margin="1dp"
+            android:layout_margin="2dp"
             android:layout_marginTop="2dp"
             app:layout_constraintStart_toEndOf="@+id/rightPlaceText"
             app:layout_constraintTop_toTopOf="parent" />
@@ -68,6 +69,7 @@
             android:id="@+id/player"
             android:layout_width="80dp"
             android:layout_height="50dp"
+            android:layout_margin="2dp"
             android:layout_marginTop="2dp"
             app:layout_constraintStart_toEndOf="@+id/wrongPlaceText"
             app:layout_constraintTop_toTopOf="parent" />
@@ -76,6 +78,7 @@
             android:id="@+id/rightPlaceText"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_margin="2dp"
             android:layout_marginTop="2dp"
             app:layout_constraintStart_toEndOf="@+id/p4"
             app:layout_constraintTop_toTopOf="parent" />
