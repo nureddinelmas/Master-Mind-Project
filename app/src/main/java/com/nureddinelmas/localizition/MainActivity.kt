@@ -1,13 +1,16 @@
 package com.nureddinelmas.localizition
 
 import android.content.Intent
+import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.nureddinelmas.localizition.databinding.ActivityMainBinding
+import kotlin.system.exitProcess
 
 
 class MainActivity : AppCompatActivity() {
@@ -52,10 +55,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
 
-        if (binding.button.text == "Enter Players"){
-        binding.linearLayout3.visibility = View.INVISIBLE
-        binding.linearLayout2.visibility = View.INVISIBLE
-        }
 
         val intent = intent
         val entre = intent.getIntExtra("info", 0)
@@ -63,8 +62,6 @@ class MainActivity : AppCompatActivity() {
         player2 = intent.getStringExtra("player2").toString()
         if (entre == 1){
             binding.button.text = "Check It !"
-            binding.linearLayout3.visibility = View.VISIBLE
-            binding.linearLayout2.visibility = View.VISIBLE
         }
 
         findColor()
@@ -265,7 +262,6 @@ class MainActivity : AppCompatActivity() {
             when (binding.button.text) {
                 "Play Again" -> {
                     binding.button.text = "Check It !"
-                    binding.textView.text = ""
                      imageLook.clear()
                 }
                 "Play Now" -> {binding.button.text = "Check It !"
@@ -387,19 +383,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (fourth == imageList[3] && first == imageList[0] && second == imageList[1] && third == imageList[2]){
-            binding.textView.text = "${player}!! DU VIN, BRA JOBBAT!! KLART!! :)))"
+            Snackbar.make(binding.root,"BRA JOBBAT!!! ${player}! Du vann!! ::)) ", Snackbar.LENGTH_INDEFINITE).setAction("Exit? ", View.OnClickListener {
+                finish()
+                exitProcess(0)}).show()
             binding.button.text = "Play Again"
             findColor()
 
         }else{
-            Snackbar.make(binding.root,"Misslyckades :(( ", Snackbar.LENGTH_LONG).setAction("${player}! avsluta spelet?", View.OnClickListener { finish() }).show()
-            binding.textView.text = "NOT YET DONE!"
+            Snackbar.make(binding.root,"Misslyckades :(( ", Snackbar.LENGTH_LONG).setAction("${player}! Exit?", View.OnClickListener { exitProcess(0) }).show()
             binding.button.text = "Try One More Time"
             oneMoreTime()
         }
 
     }
-
 
     private fun createNewImageList(){
 

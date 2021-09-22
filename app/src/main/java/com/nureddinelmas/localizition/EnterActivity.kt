@@ -24,13 +24,13 @@ class EnterActivity : AppCompatActivity() {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 
         val animDrawable = enter_layout.background as AnimationDrawable
-        animDrawable.setEnterFadeDuration(2)
+        animDrawable.setEnterFadeDuration(10)
         animDrawable.setExitFadeDuration(5000)
         animDrawable.start()
 
 
 
-        Thread.sleep(8000)
+
 
         binding.root.setOnClickListener {
             val intent = Intent(this@EnterActivity, InputActivity::class.java)

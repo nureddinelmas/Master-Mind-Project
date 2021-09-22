@@ -21,8 +21,9 @@ class InputActivity : AppCompatActivity() {
                 intent.putExtra("info", 1)
                 intent.putExtra("player1", binding.playerOneEditText.text.toString())
                 intent.putExtra("player2", binding.playerTwoEditText.text.toString())
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                 startActivity(intent)
-                finish()
+
 
             } else{
                 binding.playerOneEditText.error = "Enter a player name!!"
