@@ -1,9 +1,11 @@
 package com.nureddinelmas.localizition
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.MotionEvent
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -48,6 +50,7 @@ class MainActivity : AppCompatActivity() {
 
     var imageLook = ArrayList<ResultLook>()
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -61,7 +64,9 @@ class MainActivity : AppCompatActivity() {
         player1 = intent.getStringExtra("player1").toString()
         player2 = intent.getStringExtra("player2").toString()
         if (entre == 1){
-            binding.button.text = "Check It !"
+            playerChoose(player1, player2)
+            binding.button.text = "${player} är det din tur!"
+            timer.start()
         }
 
         findColor()
@@ -263,17 +268,22 @@ class MainActivity : AppCompatActivity() {
                 "Play Again" -> {
                     binding.button.text = "Check It !"
                      imageLook.clear()
+
                 }
-                "Play Now" -> {binding.button.text = "Check It !"
+                "Play Now" -> {binding.button.text = "${player} är det din tur!"
                 }
                 "Check It !" -> {
                     playerKontrol += 1
                     playerChoose(player1,player2)
-                    checkIt() }
-                "Try One More Time" -> {
-                    playerKontrol += 1
+                    checkIt()
+                   timer.start()
+                }
+                "${player} är det din tur!" -> {
+                    timer.start()
+                    oneMoreTime()
+                    checkIt()
                     playerChoose(player1,player2)
-                    checkIt() }
+                }
             }
                 }
     }
@@ -354,20 +364,24 @@ class MainActivity : AppCompatActivity() {
         right = 0
         createNewImageList()
 
-        if (fourth != imageList[3]){
+        // Om det finns ingen färg så ska visas bara
+        if (imageList[0] != first && imageList[0] != second && imageList[0] != third && imageList[0] != fourth){
             wrong += 1
         }
 
-        if (first != imageList[0]){
-            wrong += 1
-        }
-        if (second != imageList[1]){
-            wrong += 1
-        }
-        if (third != imageList[2]){
+        if (imageList[1] != first && imageList[1] != second && imageList[1] != third && imageList[1] != fourth){
             wrong += 1
         }
 
+        if (imageList[2] != first && imageList[2] != second && imageList[2] != third && imageList[2] != fourth){
+            wrong += 1
+        }
+
+        if (imageList[3] != first && imageList[3] != second && imageList[3] != third && imageList[3] != fourth){
+            wrong += 1
+        }
+
+        // Right answer we check
         if (fourth == imageList[3]){
             right += 1
         }
@@ -390,9 +404,9 @@ class MainActivity : AppCompatActivity() {
             findColor()
 
         }else{
-            Snackbar.make(binding.root,"Misslyckades :(( ", Snackbar.LENGTH_LONG).setAction("${player}! Exit?", View.OnClickListener { exitProcess(0) }).show()
-            binding.button.text = "Try One More Time"
-            oneMoreTime()
+            Snackbar.make(binding.root,"${player}! misslyckades :(( ", Snackbar.LENGTH_LONG).setAction("Exit?", View.OnClickListener { exitProcess(0) }).show()
+            // binding.button.text = "${player} är det din tur!"
+
         }
 
     }
@@ -434,7 +448,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun  oneMoreTime(){
-        imageLook.add(ResultLook(imageList[0], imageList[1], imageList[2], imageList[3], "$wrong wrong place", "$right right place", "$player"))
+        imageLook.add(ResultLook(imageList[0], imageList[1], imageList[2], imageList[3], "$wrong Wrong", "$right Right", "$player"))
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         val adapter = ResultAdapter(imageLook)
@@ -449,6 +463,18 @@ class MainActivity : AppCompatActivity() {
             player2
         }
         return player
+    }
+
+    val timer = object : CountDownTimer(15000,1000) {
+        override fun onTick(millisUntilFinished: Long) {
+            binding.button.text = "$player! Du har ${millisUntilFinished/1000} seconder"
+            playerKontrol += 1
+        }
+
+        override fun onFinish() {
+            binding.button.text =  "${player} är det din tur!"
+        }
+
     }
 
 }
